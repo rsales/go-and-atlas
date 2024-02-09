@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  api:
+    build: ./api
+    ports:
+      - "8080:8080"
+  # mongo:
+  #   image: mongodb/atlas
+  #   privileged: true
+  #   command: |
+  #     /bin/bash -c "atlas deployments setup --type local --port 27778 --bindIpAll --username root --password root --force && tail -f /dev/null"
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   ports:
+  #     - 27778:27778
+
+networks:
+  my-network-two:
+    name: my-network-two
+    driver: default
+    external: true
