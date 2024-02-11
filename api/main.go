@@ -89,7 +89,7 @@ func getMovieByID(c *gin.Context) {
 
 	// Find movie by ObjectId
 	var movie bson.M
-	err = mongoClient.Database("sample_mflix").Collection("movies").FindOne(context.TODO(), bson.D{{"_id", id}}).Decode(&movie)
+	err = mongoClient.Database("sample_mflix").Collection("movies").FindOne(context.TODO(), bson.D{{Key: "_id", Value: id}}).Decode(&movie)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
